@@ -221,6 +221,7 @@ int MaxxCore::processTrackCore(juce::File track, juce::File destInfo, bool useAv
 			qualId);
 	if (!writer)
 		return 12; // can't create writer
+	os.release(); // writer 已接管 stream 所有权
 
 	juce::AudioBuffer<float> buf;
 	juce::AudioBuffer<float> bufDest;
@@ -286,7 +287,6 @@ int MaxxCore::processTrackCore(juce::File track, juce::File destInfo, bool useAv
 	}
 	writer->flush();
 	delete writer;
-	os.release();
 	delete[] arrTime;
 	delete[] arrFreq;
 	return 0;
