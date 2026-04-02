@@ -136,7 +136,11 @@ int MaxxCore::analyze(juce::File pre, juce::File post) {
 		}
 	}
 
-	delete[]arrTimePre, arrTimePost, arrFreqPre, arrFreqPost, mSoftenTmp;
+	delete[] arrTimePre;
+	delete[] arrTimePost;
+	delete[] arrFreqPre;
+	delete[] arrFreqPost;
+	delete[] mSoftenTmp;
 
 	mIsAnalyzed = true;
 	return 0;
@@ -289,7 +293,8 @@ int MaxxCore::processTrackCore(juce::File track, juce::File destInfo, bool useAv
 	writer->flush();
 	delete writer;
 	os.release();
-	delete[] arrTime, arrFreq;
+	delete[] arrTime;
+	delete[] arrFreq;
 	return 0;
 }
 
