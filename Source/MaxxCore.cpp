@@ -60,14 +60,10 @@ int MaxxCore::analyze(juce::File pre, juce::File post) {
 	bufPre.setSize(2, mFftSize);
 	bufPost.setSize(2, mFftSize);
 
-	auto arrTimePre = new kiss_fft_scalar[mFftSize];
-	auto arrTimePost = new kiss_fft_scalar[mFftSize];
 	auto arrFreqPre = new kiss_fft_cpx[mFreqDomainSize];
 	auto arrFreqPost = new kiss_fft_cpx[mFreqDomainSize];
 
 	auto mSoftenTmp = new float[mFreqDomainSize];
-
-	bool failed = false;
 
 	for (int i = 0; i < 2; i++) {
 		memset(mAvgDatas[i].data(), 0, sizeof(float) * mFreqDomainSize);
@@ -136,8 +132,6 @@ int MaxxCore::analyze(juce::File pre, juce::File post) {
 		}
 	}
 
-	delete[] arrTimePre;
-	delete[] arrTimePost;
 	delete[] arrFreqPre;
 	delete[] arrFreqPost;
 	delete[] mSoftenTmp;
