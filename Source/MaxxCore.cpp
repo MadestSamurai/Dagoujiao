@@ -31,7 +31,6 @@ int MaxxCore::analyze(juce::File pre, juce::File post) {
 	mIsAnalyzed = false;
 	mAnalysisCnt = 0;
 	for (int i = 0; i < 2; i++) {
-		mTimeDatas[i].clear();
 		mAnalysisDatas[i].clear();
 	}
 	auto readerPre = mFormatManager.createReaderFor(pre);
@@ -150,11 +149,6 @@ MaxxCore::StatusInfo MaxxCore::getStatus()
 		mAnalysisCnt,
 		mIsAnalyzed
 	};
-}
-
-int MaxxCore::analyzeCore(float** pre, float** post, int n)
-{
-	return 0;
 }
 
 int MaxxCore::processTracks(juce::Array<juce::File> files, juce::File destInfo, bool usePrefix)

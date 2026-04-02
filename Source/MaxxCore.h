@@ -24,10 +24,8 @@ private:
     double mSampleRate = 0;
     bool mIsAnalyzed = false;
     int64_t mAnalysisCnt = 0;
-    std::vector<float> mTimeDatas[2], mAnalysisDatas[2];
+    std::vector<float> mAnalysisDatas[2];
     kiss_fftr_cfg mCfgFft, mCfgIfft;
-    float* fftArrTime;
-    kiss_fft_cpx* fftArrFreq;
     bool mIsSoften = false;
     int mSoftenKernelSize = 16;
     float mSoftenSigma = 4.f;
@@ -43,9 +41,7 @@ public:
     int processShots(juce::Array<juce::File>, juce::File, bool = true);
 private:
     juce::AudioFormatManager mFormatManager;
-    juce::AudioBuffer<float> cool;
 
-    int analyzeCore(float** pre, float** post, int n);
     int processTrackCore(juce::File, juce::File, bool, bool);
 
 };

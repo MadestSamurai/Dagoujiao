@@ -59,11 +59,6 @@ inline const kiss_fft_cpx rotate2D(kiss_fft_cpx cpx, kiss_fft_scalar rad) {
     return kiss_fft_cpx(x * cs - y * sn, x * sn + y * cs);
 }
 
-inline const kiss_fft_cpx remap(float x, kiss_fft_cpx a, kiss_fft_cpx b) {
-    kiss_fft_cpx result{ b.r*x + a.r*(1.0f-x), b.r * x + a.r * (1.0f - x) };
-    return result;
-}
-
 inline const bool isAllZero(float* data, int count) {
     for (int i = 0; i < count; i++) {
         if (!apprEq0(data[i]))
